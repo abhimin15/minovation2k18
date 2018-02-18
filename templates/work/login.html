@@ -1,0 +1,31 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Inline form</h2>
+    {% if form.errors %}
+  <p>the username or password is invalid</p>
+    {% endif %}
+  <form class="form-inline" method="post" action="{% url 'auth_view' %}">{% csrf_token %}
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+    </div>
+      <div class="form-group">
+      <label for="remember">Remember Me</label>
+          <input type="checkbox" name="remember" value="on">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+<a href="{% url 'password_reset' %}">Password Reset</a>
+</div>
+</body>
+</html>
