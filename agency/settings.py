@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'payment',
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -137,3 +139,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),)
 
 STATIC_URL = '/static/'
+#paypal settings
+PAYPAL_RECEIVER_EMAIL='abhishek.lock.97@gmail.com'
+PAYPAL_TEST=True

@@ -71,8 +71,23 @@
                      <div><p style="text-align:center;font-size:32px;top:20%;color:#8b344f;">
                                        Welcome {{full_name}}</p>
                   </div>
-                <div><a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'infobro' %}" target="_blank">Info Brochure</a></div>
+
+
+                <div>
+                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'infobro' %}" target="_blank">Info Brochure</a></div>
                        {% endif %}
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="business" value="abhishek.lock.97@gmail.com">
+    <input type="hidden" name="cmd" value="_donations">
+    <input type="hidden" name="item_name" value="Friends of the Park">
+    <input type="hidden" name="item_number" value="Fall Cleanup Campaign">
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="image" name="submit" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png"
+    alt="Donate">
+    <img alt="" width="1" height="1"
+    src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+
+</form>
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'registration' %}">SingUp</a>
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'login' %}">SignIn</a>
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'contactpage' %}">Contact Us</a>

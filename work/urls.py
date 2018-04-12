@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import views
 urlpatterns = [
     url(r'^$',views.index,name='index'),
+    url(r'^thanku/$', views.thanku, name='thanku'),
     url(r'^messages/$', views.message, name='messages'),
     url(r'^registration/$', views.registration, name='registration'),
     url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),
@@ -19,4 +20,8 @@ urlpatterns = [
         views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset/done/$', views.password_reset_complete, name='password_reset_complete'),
     url(r'^email/$', views.mail_sending, name='mail_sending'),
+    url(r'^success/$', views.success, name='order.success'),
+    url(r'^checkout/$',views.checkout, name='order.checkout'),
+    url(r'^failure/$', views.failure, name='order.failure'),
+
 ]
