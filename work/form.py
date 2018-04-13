@@ -25,23 +25,13 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = contact
         fields = ['name','email','number','message']
-class OrderForm(forms.Form):
-    # cart order related fields
-    txnid = forms.CharField(widget=forms.HiddenInput())
-    productinfo = forms.CharField(widget=forms.HiddenInput())
-    amount = forms.DecimalField(decimal_places=2,widget=forms.HiddenInput(attrs={'id':'amount_field'}))
+class OrderForm(forms.ModelForm):
+    email = forms.EmailField(label="Email",widget=forms.TextInput(attrs={'class':'form-control','required':'true','placeholder':'Email'}))
+    amount = forms.DecimalField(decimal_places=2)
+    class Meta:
+        model = Profile
+        fields = ['user','email','amount']
 
-    # buyer details
-    firstname = forms.CharField(widget=forms.HiddenInput())
-    lastname = forms.CharField(required=False,widget=forms.HiddenInput())
-    email = forms.EmailField(widget=forms.HiddenInput())
-    phone = forms.RegexField(regex=r'\d{10}', min_length=10,max_length=15,widget=forms.HiddenInput())
-    address1 = forms.CharField(required=False,widget=forms.HiddenInput())
-    address2 = forms.CharField(required=False,widget=forms.HiddenInput())
-    city = forms.CharField(required=False,widget=forms.HiddenInput())
-    state = forms.CharField(required=False,widget=forms.HiddenInput())
-    country = forms.CharField(required=False,widget=forms.HiddenInput())
-    zipcode = forms.RegexField(regex=r'\d{6}', min_length=6, max_length=6, required=False,widget=forms.HiddenInput())
 class paymentForm(forms.Form):
 	delegateOption=(('Indian Delegate', 'Indian Delegate',),('Foreign Delegate', 'Foreign Delegate',),)
 	delegate = forms.ChoiceField(widget=forms.Select(attrs={'class' : 'form-control','id':'delegate'}),choices=delegateOption)

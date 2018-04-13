@@ -26,7 +26,7 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.shortcuts import resolve_url
 from django.utils.deprecation import RemovedInDjango110Warning
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.contrib.auth.forms import (
     AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm,
 )
@@ -37,7 +37,9 @@ from django.contrib.auth import (
 from django.contrib.auth.tokens import default_token_generator
 from django.views.decorators.cache import never_cache
 from django.views.decorators.debug import sensitive_post_parameters
-
+from django.conf import settings
+from django.shortcuts import render, get_object_or_404
+from paypal.standard.forms import PayPalPaymentsForm
 # Create your views here.
 def index(request):
     return render_to_response('work/index.html',{})
@@ -107,6 +109,41 @@ def contactpage(request):
     else:
         form1=ContactForm()
         return render(request,'work/message.html',{'form1':form1})
+
+def donation(request):
+    if request.method == 'POST':
+        form2 = OrderForm(request.POST)
+        if form2.is_valid():
+            order = form2.save()
+            request.session['order']=order
+    else:
+        form2 = OrderForm()
+        return render(request,'work/donation.html',{'form2':form2})
+
+def payment_process(request):
+    host = request.get_host()
+    paypal_dict = {
+        'business': settings.PAYPAL_RECEIVER_EMAIL,
+        'amount': '100',
+        'item_name': 'Item_Name_xyz',
+        'invoice': 'Abhishek',
+        'currency_code': 'USD',
+        'notify_url': 'http://{}{}'.format(host, reverse('paypal-ipn')),
+        'return_url': 'http://{}{}'.format(host, reverse('payment_done')),
+        'cancel_return': 'http://{}{}'.format(host, reverse('payment_canceled')),
+    }
+    form4 = PayPalPaymentsForm(initial=paypal_dict)
+    return render(request, 'work/payment_process.html', {'form4': form4})
+
+@csrf_exempt
+def payment_done(request):
+    return render(request,'work/done.html',{})
+
+@csrf_exempt
+def payment_canceled(request):
+    return render(request,'work/canceled.html',{})
+
+
 def loginpage(request):
     c={}
     c.update(csrf(request))
@@ -270,183 +307,3 @@ def password_reset_complete(request,
 def mail_sending(request):
     send_mail('just checking', 'I am the best', 'as57807@gmail.com', ['abhishek.lock.97@gmail.com'],fail_silently=False,)
     return True
-def checkout(request):
-	if request.method == 'POST':
-		try:
-			userDetails=AluminiDetails.objects.get(email=request.user)
-			if userDetails.register==1:
-				return render(request, 'work/errorMessage.html', {'error':"You are already registered for the meet"})
-		except:
-			return render(request, 'work/errorMessage.html', {'error':"Unrecognized Request"})
-		order_form = OrderForm(request.POST)
-		person_details = paymentForm(request.POST)
-	   # try:
-		number_of_person=request.POST['persons_count']
-		delegate=request.POST['delegate']
-
-		if delegate=="Indian Delegate":
-			amount=((int(number_of_person)-1)*500)+5000
-			cc="rupee"
-			merchant_key=settings.PAYU_INFO['merchant_key_rupee']
-			salt=settings.PAYU_INFO['salt_rupee']
-		elif delegate=="Foreign Delegate":
-			amount=((int(number_of_person)-1)*25)+100
-			cc="dollar"
-			merchant_key=settings.PAYU_INFO['merchant_key_usd']
-			salt=settings.PAYU_INFO['salt_usd']
-		#except:
-			#return render(request, 'failure.html', {'error':"Invalid Inputs"})
-
-		try:
-			person={"person1":request.POST['person1'],"person2":request.POST['person2'],"person3":request.POST['person3'],"person4":request.POST['person4'],"person5":request.POST['person5'],"person6":request.POST['person6']}
-			count=0
-			for key, value in person.iteritems():
-				if not value.strip()=="":
-					count+=1
-			if not str(count)==number_of_person:
-				return render(request, 'work/errorMessage.html', {'error':"Person count does not match",'personCount':number_of_person,'count':count,'person':person})
-
-		except:
-			return render(request, 'work/errorMessage.html', {'error':"Error occured while matching the person count",'personCount':number_of_person,'count':count,'person':person})
-
-		count=ReferenceNumber.objects.get(id=1)
-
-		value=str(count.number)
-		count.number+=1
-		count.save()
-		txnid="AM"+"0"*(5-len(value))+value
-
-		#order_form.txnid=txnid
-		if order_form.is_valid():
-			initial = order_form.cleaned_data
-
-			if not initial['amount']==(amount):
-				return render(request, 'work/errorMessage.html', {'error':"Amount does not match"})
-			initial.update({'key': merchant_key,
-							'surl': request.build_absolute_uri(reverse('order.success')),
-							'furl': request.build_absolute_uri(reverse('order.failure')),
-							'udf1':person['person1']+"|"+person['person2']+"|"+person['person3'],'udf2':person['person4']+"|"+person['person5']+"|"+person['person6'],'udf3':number_of_person,'udf4':delegate,
-							})
-			# Once you have all the information that you need to submit to payu
-			# create a payu_form, validate it and render response using
-			# template provided by PayU.
-			initial['txnid']=txnid
-			payu_form = PayUForm(initial)
-			if payu_form.is_valid():
-				payuForm=payu_form.cleaned_data
-				payu_form_final=PayUForm(payuForm)
-				#return render(request, 'payment/errorMessage.html', {'error':payuForm["hash"]+" "+payuForm["udf4"]+" "+payuForm["txnid"]})
-				context = {'form': payu_form_final,
-						   'action': "%s" % settings.PAYU_INFO['payment_url']}
-				ts=time.time()
-
-				loggerCheckout.info(txnid+"  "+initial['email']+"  "+datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S'))
-				return render(request, 'work/paymentForm.html', context)
-			else:
-				loggerPay.error('Something went wrong! Looks like initial data\
-						used for payu_form is failing validation')
-				return render(request, 'work/errorMessage.html', {'error':"Code:410 ."})
-		else:
-			return render(request, 'work/errorMessage.html', {'error':"Code: 409"})
-	else:
-
-		return render(request, 'work/errorMessage.html', {'error':"Request is not POST"})
-#@csrf_protect
-@csrf_exempt
-def success(request):
-	if request.method == 'POST':
-		ts=time.time()
-		timestamp=datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-		try:
-			txnid=request.POST.get('txnid')
-			mihpayid=request.POST.get('mihpayid')
-			email=request.POST.get('email')
-			amount=request.POST.get('amount')
-			error_Message=request.POST.get('error_Message')
-			status=request.POST.get('status')
-			mode=request.POST.get('mode')
-			group1=request.POST.get('udf1').split("|")
-			group2=request.POST.get('udf2').split("|")
-			personCount=request.POST.get('udf3')
-			delegate=request.POST.get('udf4')
-
-			#timestamp=datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-		except:
-			loggerPay.error("Parameters are not in response")
-
-		if delegate=="Indian Delegate":
-			#amount=((int(number_of_person)-1)*3000)+5000
-			cc="rupee"
-			merchant_key=settings.PAYU_INFO['merchant_key_rupee']
-			salt=settings.PAYU_INFO['salt_rupee']
-		elif delegate=="Foreign Delegate":
-			#amount=int(number_of_person)*100
-			cc="dollar"
-			merchant_key=settings.PAYU_INFO['merchant_key_usd']
-			salt=settings.PAYU_INFO['salt_usd']
-
-		if not verify_hash(request.POST,salt):
-			return redirect('order.failure')
-		else:
-			loggerPay.info(mihpayid+"\t"+txnid+'\t'+email+"\t"+amount+"\t"+cc+"\t"+timestamp+"\t"+error_Message+"\t"+status)
-			#try:
-			payment=PaymentDetails(email=email,txnid=txnid,mihpayid=mihpayid,timestamp=datetime.datetime.now(),amount=amount,mode=mode)
-			members=AlumniMeetMembers(email=email,delegate=delegate,person_count=personCount,person1=group1[0],person2=group1[1],person3=group1[2],person4=group2[0],person5=group2[1],person6=group2[2])
-			payment.save()
-			members.save()
-			user=AluminiDetails.objects.get(email=request.POST.get('email'))
-			user.register=1
-			user.save()
-			return render(request, 'payment/success.html',{'request':request.POST})
-			#except:
-				#return render(request, 'errorMessage.html', {'error':"Database Error"})
-
-	else:
-                return render_to_response('portal/error.html')
-@csrf_exempt
-def failure(request):
-	context_dict={}
-	if request.method == 'POST':
-
-		ts=time.time()
-		try:
-			txnid=request.POST.get('txnid')
-			mihpayid=request.POST.get('mihpayid')
-			email=request.POST.get('email')
-			amount=request.POST.get('amount')
-			error_Message=request.POST.get('error_Message')
-			status=request.POST.get('status')
-			timestamp=datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-			delegate=request.POST.get('udf4')
-		except:
-			loggerPay.error("Parameters are not in response")
-
-		if delegate=="Indian Delegate":
-			#amount=((int(number_of_person)-1)*3000)+5000
-			cc="rupee"
-			merchant_key=settings.PAYU_INFO['merchant_key_rupee']
-			salt=settings.PAYU_INFO['salt_rupee']
-		elif delegate=="Foreign Delegate":
-			#amount=int(number_of_person)*100
-			cc="dollar"
-			merchant_key=settings.PAYU_INFO['merchant_key_usd']
-			salt=settings.PAYU_INFO['salt_usd']
-
-		context_dict["email"]=email
-		context_dict['timestamp']=timestamp
-		context_dict['txnid']=txnid
-		if not verify_hash(request.POST,salt):
-			loggerPay.warning("Response data for order (txnid: %s) has been "
-						   "tampered. Confirm payment with PayU." %
-						   request.POST.get('txnid'))
-
-			context_dict['reason']="Response data for payment has been tampered"
-
-			return render(request, 'payment/failure.html', context_dict)
-		else:
-			loggerPay.info(mihpayid+"\t"+txnid+'\t'+email+"\t"+amount+"\t"+cc+"\t"+timestamp+"\t"+error_Message+"\t"+status)
-			context_dict['reason']=request.POST.get('error_Message')
-			return render(request, 'payment/failure.html', context_dict)
-
-	else:
-		raise Http404("Unauthorized request")

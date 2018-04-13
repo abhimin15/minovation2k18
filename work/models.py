@@ -27,6 +27,10 @@ class contact(models.Model):
 
     def __unicode__(self):
         return self.name
+class Payment(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.CharField(max_length=100, unique=True)
+    amount = models.IntegerField()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
