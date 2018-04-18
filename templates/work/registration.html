@@ -1,6 +1,9 @@
+
+
 <h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_ul}}
     <button type="submit">Sign up</button>
   </form>
+
