@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'^payment_process/$', views.payment_process, name='payment_process' ),
     url(r'^payment_done/$', views.payment_done, name='payment_done'),
     url(r'^payment_canceled/$', views.payment_canceled, name='payment_canceled'),
-
+    url(r'^payment_take/$',views.payment_taken, name='payment_taken'),
+    url(r'^decision/$',views.decision,name='decision'),
 ]

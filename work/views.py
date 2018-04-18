@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response,Http404,redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
-from django.core.context_processors import csrf
+from django.template.context_processors import csrf
 from .models import contact,Profile
 from .form import *
 from django.contrib import messages
@@ -120,11 +120,19 @@ def donation(request):
         form2 = OrderForm()
         return render(request,'work/donation.html',{'form2':form2})
 
+def decision(request):
+    if request.user.is_authenticated():
+        return redirect('/agency/payment_take/')
+    else:
+        return redirect('/agency/login/')
+
+def payment_taken(request):
+    return render(request,'work/DonateForm.html',{})
 def payment_process(request):
     host = request.get_host()
     paypal_dict = {
-        'business': settings.PAYPAL_RECEIVER_EMAIL,
-        'amount': '100',
+        'business': 'abhishek.lock.97@gmail.com',
+        'cmd': '_donations',
         'item_name': 'Item_Name_xyz',
         'invoice': 'Abhishek',
         'currency_code': 'USD',
@@ -158,7 +166,6 @@ def auth_view(request):
     user=auth.authenticate(username=username,password=password)
     if user is not None:
         auth.login(request,user)
-        messages.success(request, 'Your password was updated successfully!')
         return HttpResponseRedirect('/agency/logged/')
     else:
         return  HttpResponseRedirect('/agency/invalid_log/')

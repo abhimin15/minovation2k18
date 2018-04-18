@@ -1,0 +1,13 @@
+<form method="post" action="https://www.paypal.com/cgi-bin/webscr">
+    <input type="hidden" name="business" value="abhishek.lock.97@gmail.com">
+    <input type="hidden" name="cmd" value="_donations">
+    <label for="usr">Name:</label>
+    <input type="text" name="amount" id="usr">
+    <input type="hidden" name="item_name" value="Friends of the Park">
+    <input type="hidden" name="item_number" value="Fall Cleanup Campaign">
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="notify_url" value="'http://{}{}'.format(host, reverse('paypal-ipn'))">
+    <input type="hidden" name="return_url" value="'http://{}{}'.format(host, reverse('payment_done'))">
+    <input type="hidden" name="cancel_return" value="'http://{}{}'.format(host, reverse('payment_canceled'))">
+    <input type="submit" value="submit">
+</form>
