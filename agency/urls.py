@@ -18,11 +18,15 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from . import  views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^agency/',include('work.urls')),
-    url(r'^paypal/', include('paypal.standard.ipn.urls')),
-    url(r'^accounts/', include('allauth.urls')),
-
+    url(r'^$', views.index,name='index'),
+    url(r'^caform/$', views.caform,name='caform'),
+    url(r'^eventregistration/$', views.eventregistration,name='eventregistration'),
+    url(r'^capost/$', views.capost,name='capost'),
+    url(r'^eventpost/$', views.eventpost,name='eventpost'),
+    url(r'^contact/$', views.contacts,name='contact'),
+    url(r'^brochure/$', views.infobro, name='infobro'),
 ]

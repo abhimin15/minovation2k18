@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Campus Ambassdor</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css3/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="/static/js3/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<!-- font-awesome-icons -->
+<!-- //font-awesome-icons -->
+</head>
+<body style="background-image:url(/static/images/1.jpg);">
+<!-- banner -->
+	<div class="center-container">
+		<div class="main">
+			<h1 class="w3layouts_head">Campus Ambassador Form</h1>
+				<div class="w3layouts_main_grid">
+					<form action="{% url 'capost' %}" method="post" class="w3_form_post">
+                        {% csrf_token %}
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Name </label>
+								<input type="text" name="name" placeholder="Your Name" required="">
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Email </label>
+								<input type="text" name="email" placeholder="Your Email" required="">
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Phone Number </label>
+								<input type="text" name="phone" placeholder="Phone Number" required="">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Whatsapp Number </label>
+								<input type="text" name="wat" placeholder="Whatsapp Number" required="">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>College Name </label>
+								<input type="text" name="college" placeholder="College Name" required="">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Year</label>
+								<select name="year">
+									<option value="-" selected="" disabled="">Select</option>
+                                    <option value="2">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="Mtech">Mtech</option>
+								</select>
+							</span>
+							<span class="agileits_grid">
+								<label>Branch </label>
+								<input type="text" name="branch" placeholder="Branch" required="">
+								</span>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<
+					<div class="w3_main_grid">
+						<div class="w3_main_grid_right">
+						<center>
+							<input type="submit" value="Submit" id="careg">
+						</center>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="w3layouts_copy_right">
+				<div class="container">
+					<p>© 2018 Event Registration Form. All rights reserved |IIT BHU .</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- //footer -->
+</body>
+</html>

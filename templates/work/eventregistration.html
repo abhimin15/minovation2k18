@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Event Registration Form</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css3/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="/static/js3/jquery-2.1.4.min.js"></script>
+</head>
+<body style="background-image:url(/static/images/1.jpg);">
+<!-- banner -->
+	<div class="center-container">
+		<div class="main">
+			<h1 class="w3layouts_head">Event Registration Form</h1>
+				<div class="w3layouts_main_grid">
+					<form action="{% url 'eventpost' %}" method="post" class="w3_form_post">
+                        {% csrf_token %}
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Name </label>
+								<input type="text" name="name" placeholder="Your Name" required="">
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Email </label>
+								<input type="text" name="email" placeholder="Your Email" required="">
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Phone Number </label>
+								<input type="text" name="phone" placeholder="Phone Number" required="">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Whatsapp Number </label>
+								<input type="text" name="wat" placeholder="Phone Number" required="">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>College Name </label>
+								<input type="text" name="college" placeholder="College Name" required="">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Year</label>
+								<select name="year">
+									<option value="-" selected="" disabled="">Select</option>
+                                    <option value="2">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="Other">Other</option>
+								</select>
+							</span>
+							<span class="agileits_grid">
+								<label>Branch </label>
+								<input type="text" name="branch" placeholder="Branch" required="">
+								</span>
+						</div>
+						<br/>
+						<div class="form-w3ls-1">
+							<div class="grid-w3layouts1">
+								<div class="w3-agile1">
+									<label style='color:white;'>EVENTS</label><br/>
+										<ul>
+											<li>
+												<input type="checkbox" name="selector2" style='margin-right:5%;',value='INTRIGUE'>INTRIGUE
+
+											</li>
+											<li>
+												<input type="checkbox" name="selector2" style='margin-right:5%;',value='SIMULATION'>SIMULATION
+
+
+											</li>
+											<li>
+												<input type="checkbox" name="selector2" style='margin-right:5%;',value="PAPER PRESENTATION">PAPER PRESENTATION
+
+
+											</li>
+											<li>
+												<input type="checkbox" name="selector2" style='margin-right:5%;',value="MENSURA">MENSURA
+
+
+											</li>
+											<li>
+												<input type="checkbox" name="selector2" style='margin-right:5%;',value="GEOCARTER">GEOCARTER
+
+												>
+											</li>
+											<li>
+												<input type="checkbox" name="selector2" style='margin-right:5%;',value="INNOTECH">INNOTECH
+
+
+											</li>
+											<li>
+												<input type="checkbox" name="selector2" style='margin-right:5%;',value="RECONDITE">RECONDITE
+
+
+											</li>
+											<li>
+												<input type="checkbox" name="selector2" style='margin-right:5%;',value="INDUSTRIAL DESIGN PROBLEM">INDUSTRIAL DESIGN PROBLEM
+
+
+											</li><li>
+												<input type="checkbox" id="f-option" name="selector2" style='margin-right:5%;',value="WORKSHOPS">WORKSHOPS
+											</li>
+										</ul>
+								</div>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<
+					<div class="w3_main_grid">
+						<div class="w3_main_grid_right">
+						<center>
+							<input type="submit" value="Submit" id="eventreg">
+						</center>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="w3layouts_copy_right">
+				<div class="container">
+					<p>© 2018 Event Registration Form. All rights reserved |IIT BHU .</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- //footer -->
+</body>
+</html>

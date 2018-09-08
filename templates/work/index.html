@@ -1,207 +1,195 @@
-{% extends 'work/base.html' %}
-{% block body %}
-    <!-- Header -->
-    <header class="masthead" style="background-image: url('/static/images/naruto3.jpg')">
-      <div class="container">
-        <div class="intro-text">
-        <div>{% if messages %}
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        {% endif %}</div>
-          <div class="intro-lead-in">Welcome To My Resume Website!</div>
-          <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-            {% if request.user.is_authenticated  %}
-                     <div><p style="text-align:center;font-size:32px;top:20%;color:#8b344f;">
-                                       Welcome {{full_name}}</p>
-                  </div>
+<!DOCTYPE html>
+<html lang="en">
 
 
-                <div>
-                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'infobro' %}" target="_blank">Info Brochure</a></div>
-                       {% endif %}
+<!-- Mirrored from himalayanthemes.net/Demos/Mico/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Aug 2018 19:14:34 GMT -->
+<head>
+        <title>Minovation 2018</title>
+        <meta name="description" content=""/>
+        <meta name="keywords" content=""/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <script src="/static/js/jquery.min.js" charset="utf-8">
-            $(function () {
-                $('#donateForm').on('submit',function () {
-                    {% if not request.user.is_authenticated  %}
-                        alert("DOnate")
-                    {% endif %}
-                })
-            })
-        </script>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'registration' %}">SingUp</a>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'login' %}">SignIn</a>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'contactpage' %}">Contact Us</a>
-        <script type="text/javascript">
-<!--
-function Warn() {
-alert ("This is a warning message!");
-}
-//-->
-</script>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="Warn();">Email</a>
-        </div>
-      </div>
-    </header>
+        <!-- Bootstrap CSS -->
+        <link href="/static/css2/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Services -->
-    <section id="education">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">EDUCATION</h2>
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-              <img src="/static/images/IITBHU.jpg" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">Undergraduate</h4>
-            <p class="text-muted">Third Year student at IIT BHU, Varanasi from Mining Engineering<br>(2015 - 2020)</p>
-          </div>
-          <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-              <img src="/static/images/maharishi.jpg" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">Intermediate</h4>
-            <p class="text-muted">From Maharishi Vidya Mandir, Naini, Allahabad with 88% marks<br>(2012 - 2014)</p>
-          </div>
-          <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-              <img src="/static/images/maharishi.jpg" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">Highschool</h4>
-            <p class="text-muted">From Maharishi Vidya Mandir, Naini, Allahabad with 9.2 CGPA<br>(2010 - 2012)</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Font Awesome CSS
+        <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Services -->
-    <section id="skill" style="background-color: #9fcdff;">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">SKILLS</h2>
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-                <img src="/static/images/skill/python.png" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">PYTHON</h4>
-          </div>
-          <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-              <img src="/static/images/skill/django.jpg" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">DJANGO</h4>
-          </div>
-          <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-              <img src="/static/images/skill/c++.png" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">C/C++</h4>
-          </div>
-           <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-              <i class="fa fa-html5" aria-hidden="true"></i>
-            </span>
-            <h4 class="service-heading">HTML</h4>
-          </div>
-           <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-                <i class="fa fa-css3" aria-hidden="true"></i>
-            </span>
-            <h4 class="service-heading">CSS</h4>
-          </div>
-           <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-                <img src="/static/images/skill/javascript.png" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">JAVASCRIPT</h4>
-          </div>
-          <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-              <img src="/static/images/skill/jquery.png" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">JQUERY</h4>
-          </div>
-          <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-              <img src="/static/images/skill/bootstrap.jpg" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">BOOTSTRAP</h4>
-          </div>
-          <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-              <img src="/static/images/skill/ajax.jpg" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">AJAX</h4>
-          </div>
-            <div class="col-md-3">
-            <span class="fa-stack fa-4x">
-              <img src="/static/images/skill/sql.png" class="img-circle" style="height:120px;">
-            </span>
-            <h4 class="service-heading">SQL</h4>
-          </div>
-        </div>
-      </div>
-    </section>
+        <link href="/static/css/magnific-popup.css" rel="stylesheet" type="text/css">
 
-    <!-- Working Experience -->
-    <section class="bg-light" id="experience">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">WORKING EXPERIENCE</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="team-member">
-              <img class="mx-auto rounded-circle" src="/static/images/kashi.jpg" alt="">
-              <h4>Kashi Yatra 2016-17</h4>
-              <p class="text-muted">Web Developer</p>
-              <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="https://github.com/abhimin15/KY-2017">
-                    <i class="fa fa-github"></i>
-                  </a>
-                </li>
-              </ul>
+        <!-- BG Slider -->
+        <link href="/static/css/flickity.min.css" rel="stylesheet" type="text/css">
+
+		<!-- Theme CSS -->
+        <link href="/static/css/theme.css" rel="stylesheet" type="text/css">
+        <link href="/static/css/responsive.css" rel="stylesheet" type="text/css">
+		<link href="/static/css2/agency.min.css" rel="stylesheet">
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body id="page-top" data-preloader-color="bg-blue">
+
+        <!-- Header Start -->
+        <header class="header-light fixed-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 navbar-header">
+                        <a class="navbar-brand page-scroll" href="#page-top">
+						    <img src="/static/images/iitbhu_logo.png" alt="" width = '46' height='400' style='position:absolute;left:-25%;'>
+                            <img src="/static/images/logo-text-dark.png" alt="" class="logo-text-dark" width = '200' height='400'>
+                            <img src="/static/images/logo-text-light.png" alt="" class="logo-text-light" width = '200' height='400'>
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <!-- //.col-lg-3 -->
+
+                    <div class="col-lg-6 navbar-wrapper justify-content-center">
+                        <div id="navigation" class="navbar navbar-expand-lg">
+                            <div class="collapse navbar-collapse" id="navbar-header">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link page-scroll" href="#venue">About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link page-scroll" href="#portfolio">Events</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link page-scroll" href="#speakers">Guests</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link page-scroll" href="#gallery">Gallery</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link page-scroll" href="#sponsors">Previous Sponsers</a>
+                                    </li>
+                                    <li class="nav-item d-lg-none">
+                                        <a class="nav-link page-scroll" href="#contact">Contact Us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- //.navbar-collapse -->
+                        </div>
+                        <!-- //.navbar -->
+                    </div>
+
+
+                    <div class="col-lg-3 d-none d-lg-block pr-lg-0">
+                      <div class="btn">
+                        <div class="align-items-center d-flex h-100 justify-content-end">
+                            <a href="#contact" class="btn btn-extra-small btn-yellow page-scroll">Contact Us</a>
+
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <!-- //.col-lg-3 -->
+                </div>
+                <!-- //.row -->
             </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="team-member">
-              <img class="mx-auto rounded-circle" src="/static/images/student.jpg" alt="">
-              <h4>Student Alumni Interaction Cell</h4>
-              <p class="text-muted">Web Developer</p>
-              <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="https://github.com/abhimin15/SAIC">
-                    <i class="fa fa-github"></i>
-                  </a>
-                </li>
-              </ul>
+            <!-- //.container -->
+        </header>
+        <!-- //Header Start -->
+
+        <!-- Section - Hero Start -->
+        <section id="hero-bg-slider" class="h-100 p-0 w-100">
+
+            <!-- BG Slider -->
+            <div class="carousel-custom carousel-fullscreen prev-next-button-orange" data-prev-next-buttons="true" data-page-dots="false" data-draggable="false" data-autoplay="6000">
+                <div class="carousel-cell bg-img-cover h-100 w-100">
+                    <div class="container h-100">
+                        <div class="row align-items-center h-100">
+                            <div class="col-lg-12 col-xl-12" style="margin-top:3%;">
+							<center>
+                                {% if messages %}
+                                <ul class="messages">
+                                    <h3 style="color:white;">{{ messages }}</h3>
+                                </ul>
+                                {% endif %}
+							<img src="/static/images/logomin.png" class="img-responsive" style="width:45%;">
+                                <h1 style='font-family:elephant;color:#ffa811;margin-bottom: 2%;'>MINOVATION 2018</h1>
+                                <h2 style='color:white;'>SEPTEMBER 28 - 30</h2>
+								<a class="btn" href="{% url 'caform' %}" style='background-color:#ffa811;color:white;'>CAMPUS AMBASSDOR</a>
+								<a class="btn" href="{% url 'eventregistration' %}" style='background-color:#ffa811;color:white'>EVENT REGISTRATION</a>
+							</center>
+                            </div>
+                            <!-- //.col-lg-10 -->
+                        </div>
+                        <!-- //.row -->
+                    </div>
+                    <!-- //.container -->
+                </div>
+                <!-- //.carousel-cell -->
+            <div class="carousel-cell bg-img-cover h-100 w-100">
+                    <div class="container h-100">
+                        <div class="row align-items-center h-100">
+                            <div class="col-lg-12 col-xl-12" style="margin-top:28%;">
+							<center>
+                                <h1 style='font-family:elephant;color:white;margin-bottom: 4%;'>CENTENARY CELEBRATIONS</h1>
+								<a class="btn" href="{% url 'caform' %}" style='background-color:#ffa811;color:white;'>CAMPUS AMBASSDOR</a>
+								<a class="btn" href="{% url 'eventregistration' %}" style='background-color:#ffa811;color:white'>EVENT REGISTRATION</a>
+							</center>
+                            </div>
+                            <!-- //.col-lg-10 -->
+                        </div>
+                        <!-- //.row -->
+                    </div>
+                    <!-- //.container -->
+                </div>
+                <!-- //.carousel-cell -->
+
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Portfolio Grid -->
-    <section class="bg-light" id="project">
+            <!-- //.carousel-custom -->
+        </section>
+        <!-- //Section - Hero End -->
+
+        <!-- Section - Venue Start -->
+        <section id="venue" class="bg-img-cover bg-overlay-black-7">
+            <div class="container">
+                <div class="row justify-content-center justify-content-lg-end no-gutters">
+                    <div class="col-lg-1 col-xl-12">
+                        <div class="bg-white p-5 position-relative rounded">
+                            <h3 class="font-alt font-w-700 letter-spacing-2 m-0 text-uppercase title-small" align="center">About us</h3>
+
+                            <span class="bg-yellow d-block mt-2 mx-auto sep-line-medium-thick-long"></span>
+                            <p class="mt-4 text-medium" style="text-align:  justify;">Department of Mining Engineering, Indian Institute of Technology (BHU) is the oldest mining institute in India. IIT(BHU) is celebrating 100 years of engineering education this year.
+
+MINOVATION 2018, the annual Techno-Management Fest of the Mining Society, Department of Mining Engineering, will be held from 28th-30th september, 2018.
+
+MINOVATION (formerly METTLE) is seen as the largest event of its kind in India with remarkable participation from across the country.<br/>
+
+Alumni from prominent mining, mine machinery and allied companies are expected to grace this occasion.
+
+Plethora of technical events, competitions, workshops, guest lectures from eminent personalities and Alumni Meet will be organised.
+
+This will provide an unparalled platform for the future technocrats and entrepreneurs to tap into their hidden potential..</p>
+                            <p class="mt-4 text-medium"></p>
+							<center>
+                            <a class="btn" target='_blank' href="{% url 'infobro' %}" style='background-color:#ffa811;color:white;'>BROCHURES</a>
+							</center>
+                        </div><!-- //.bg-white -->
+                    </div><!-- //.col-lg-6 -->
+                </div><!-- //.row -->
+            </div><!-- //.container -->
+        </section>
+        <!-- //Section - Venue End -->
+
+		<!-- Portfolio Grid -->
+    <section class="bg-light" id="portfolio">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Projects and Trainings</h2>
+            <h2 class="section-heading text-uppercase">Events
+            <span class="bg-yellow d-block mt-2 mx-auto sep-line-medium-thick-long"></span></h2>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6 col-sm-6 portfolio-item">
+          <div class="col-md-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
               <div class="portfolio-hover">
                 <div class="portfolio-hover-content">
@@ -211,11 +199,11 @@ alert ("This is a warning message!");
               <img class="img-fluid" src="/static/images/portfolio/01-thumbnail.jpg" alt="">
             </a>
             <div class="portfolio-caption">
-              <h4>Game Development</h4>
-              <p class="text-muted">CODE.FUN.DO, Microsoft</p>
+              <h4>Paper Presentation</h4>
+              <p class="text-muted"></p>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6 portfolio-item">
+          <div class="col-md-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
               <div class="portfolio-hover">
                 <div class="portfolio-hover-content">
@@ -225,11 +213,11 @@ alert ("This is a warning message!");
               <img class="img-fluid" src="/static/images/portfolio/02-thumbnail.jpg" alt="">
             </a>
             <div class="portfolio-caption">
-              <h4>Python Training</h4>
-              <p class="text-muted">INTERNSHALA VTC</p>
+              <h4>Industrial Design Problem</h4>
+              <p class="text-muted"></p>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6 portfolio-item">
+          <div class="col-md-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
               <div class="portfolio-hover">
                 <div class="portfolio-hover-content">
@@ -239,11 +227,11 @@ alert ("This is a warning message!");
               <img class="img-fluid" src="/static/images/portfolio/03-thumbnail.jpg" alt="">
             </a>
             <div class="portfolio-caption">
-              <h4>Mining Project</h4>
-              <p class="text-muted">IIT (BHU) Varanasi</p>
+              <h4>Simulation</h4>
+              <p class="text-muted"></p>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6 portfolio-item">
+          <div class="col-md-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
               <div class="portfolio-hover">
                 <div class="portfolio-hover-content">
@@ -253,47 +241,397 @@ alert ("This is a warning message!");
               <img class="img-fluid" src="/static/images/portfolio/04-thumbnail.jpg" alt="">
             </a>
             <div class="portfolio-caption">
-              <h4>Mining Project</h4>
-              <p class="text-muted">CIMFR - CSIR</p>
+              <h4>Mensura</h4>
+              <p class="text-muted"></p>
             </div>
           </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="/static/images/portfolio/05-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Intrigue</h4>
+              <p class="text-muted"></p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="/static/images/portfolio/06-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Innotech</h4>
+              <p class="text-muted"></p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal7">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="/static/images/portfolio/07-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Geocarter</h4>
+              <p class="text-muted"></p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal8">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="/static/images/portfolio/08-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Recondite</h4>
+              <p class="text-muted"></p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal9">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="/static/images/portfolio/09-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Workshops</h4>
+              <p class="text-muted"></p>
+            </div>
+          </div>
+
+
+
+
         </div>
       </div>
     </section>
+    <div id="promo" class="bg-img-cover bg-overlay-black-7">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-12 py-5 text-center">
+                        <span class="font-alt font-w-700 letter-spacing-2 text-uppercase text-white title-small">Guest Lecture</span>
+                        <span class="d-block font-alt font-w-600 letter-spacing-1 mt-3 text-gray-300 text-small">Minovation 2018 presents a string of guest lectures by the esteemed industry leaders and distinguished alumni of the department.</span>
+                        <a  class="portfolio-link" data-toggle="modal" href="#portfolioModal10">More Details</a>
+                    </div>
+                    <!-- //.col-12 -->
+                </div>
+                <!-- //.row -->
+            </div>
+            <!-- //.container -->
+        </div>
+        <!-- //Promo End -->
 
-    <!-- Contact -->
+
+        <!-- Section - Speakers Start -->
+        <section id="speakers" class="bg-gray-100">
+            <div class="container">
+                <div class="row justify-content-center mb-5">
+                    <div class="col-lg-6 text-center mb-3 mb-lg-5">
+                        <h3 class="font-alt font-w-700 letter-spacing-2 m-0 text-uppercase title-small">Honourary Mentions</h3>
+                        <span class="d-block font-alt font-w-600 letter-spacing-1 mt-2 text-gray-800 text-small text-uppercase">Faculties & Chief Guests</span>
+                        <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+                    </div>
+                    <!-- //.col-lg-6 -->
+                </div>
+                <!-- //.row -->
+
+                <div class="row justify-content-center">
+					<div class="col-md-6 col-lg-4">
+                        <figure class="m-0 position-relative">
+                            <img src="/static/images/speakers-4.jpg" alt="" class="img-fluid"/>
+                            <figcaption class="label label-small bg-orange bottom-0 m-3 position-absolute right-0 text-uppercase text-white">Chief Guest</figcaption>
+                        </figure>
+
+                        <div class="py-4 text-center">
+                            <span class="d-block font-alt font-w-600 letter-spacing-1 text-small text-uppercase">Prof. Pankaj Chandra</span>
+                            <span class="d-block font-alt font-w-600 letter-spacing-1 text-gray-800 text-extra-small text-uppercase">Vice Chancellor, Ahemdabad University</span>
+							<span class="d-block font-alt font-w-600 letter-spacing-1 text-gray-800 text-extra-small text-uppercase">Opening Ceremony</span>
+                        </div>
+                        <!-- //.py-4 -->
+                    </div>
+                    <!-- //.col-md-6 -->
+                    <div class="col-md-6 col-lg-4">
+                        <figure class="m-0 position-relative">
+                            <img src="/static/images/speakers-1.png" alt="" class="img-fluid"/>
+                            <figcaption class="label label-small bg-orange bottom-0 m-3 position-absolute right-0 text-uppercase text-white">Chairman, Minovation'18</figcaption>
+                        </figure>
+
+                        <div class="py-4 text-center">
+                            <span class="d-block font-alt font-w-600 letter-spacing-1 text-small text-uppercase">Prof. Sanjay Kumar Sharma</span>
+                            <span class="d-block font-alt font-w-600 letter-spacing-1 text-gray-800 text-extra-small text-uppercase">Head of the Department</span>
+                        </div>
+                        <!-- //.py-4 -->
+                    </div>
+                    <!-- //.col-md-6 -->
+
+                    <div class="col-md-6 col-lg-4">
+                        <figure class="m-0 position-relative">
+                            <img src="/static/images/speakers-2.jpg" alt="" class="img-fluid"/>
+                            <figcaption class="label label-small bg-orange bottom-0 m-3 position-absolute right-0 text-uppercase text-white">Incharge, Minovation'18</figcaption>
+                        </figure>
+
+                        <div class="py-4 text-center">
+                            <span class="d-block font-alt font-w-600 letter-spacing-1 text-small text-uppercase">Prof. A. K. Jain</span>
+                            <span class="d-block font-alt font-w-600 letter-spacing-1 text-gray-800 text-extra-small text-uppercase">Visiting Faculty</span>
+                        </div>
+                        <!-- //.py-4 -->
+                    </div>
+                    <!-- //.col-md-6 -->
+
+                    <div class="col-md-6 col-lg-4">
+                        <figure class="m-0 position-relative">
+                            <img src="/static/images/speakers-3.jpg" alt="" class="img-fluid"/>
+                            <figcaption class="label label-small bg-orange bottom-0 m-3 position-absolute right-0 text-uppercase text-white">Incharge, Mining Society</figcaption>
+                        </figure>
+
+                        <div class="py-4 text-center">
+                            <span class="d-block font-alt font-w-600 letter-spacing-1 text-small text-uppercase">Dr. Rajesh Rai</span>
+                            <span class="d-block font-alt font-w-600 letter-spacing-1 text-gray-800 text-extra-small text-uppercase">Associate Professor</span>
+                        </div>
+                        <!-- //.py-4 -->
+                    </div>
+                    <!-- //.col-md-6 -->
+
+
+                </div>
+                <!-- //.row -->
+            </div>
+            <!-- //.container -->
+        </section>
+        <!-- //Section - Speakers End -->
+
+
+        <!-- Promo Start -->
+
+
+
+        <!-- //Section - Schedule End -->
+
+
+        <!-- Section - Gallery Start -->
+        <section id="gallery" class="bg-gray-100">
+            <div class="container">
+                <div class="row justify-content-center mb-5">
+                    <div class="col-lg-6 text-center mb-3 mb-lg-5">
+                        <h3 class="font-alt font-w-700 letter-spacing-2 m-0 text-uppercase title-small">Our Gallery</h3>
+                        <span class="d-block font-alt font-w-600 letter-spacing-1 mt-2 text-gray-800 text-small text-uppercase">Glimpse of our Previous Fests</span>
+                        <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+                    </div>
+                    <!-- //.col-lg-6 -->
+                </div>
+                <!-- //.row -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="gallery-wrapper">
+                            <div class="gallery-grid grid-col-3 gutter-wide">
+                                <div class="item">
+                                    <figure>
+                                        <div class="gallery-img">
+                                            <a href="/static/images/gallery-1.jpg">
+                                                <img src="/static/images/gallery-1.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <!-- //.gallery-img -->
+                                    </figure>
+                                </div>
+                                <!-- //.item -->
+
+                                <div class="item">
+                                    <figure>
+                                        <div class="gallery-img">
+                                            <a href="/static/images/gallery-2.jpg">
+                                                <img src="/static/images/gallery-2.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <!-- //.gallery-img -->
+                                    </figure>
+                                </div>
+                                <!-- //.item -->
+
+                                <div class="item">
+                                    <figure>
+                                        <div class="gallery-img">
+                                            <a href="/static/images/gallery-3.jpg">
+                                                <img src="/static/images/gallery-3.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <!-- //.gallery-img -->
+                                    </figure>
+                                </div>
+                                <!-- //.item -->
+
+                                <div class="item">
+                                    <figure>
+                                        <div class="gallery-img">
+                                            <a href="/static/images/gallery-4.jpg">
+                                                <img src="/static/images/gallery-4.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <!-- //.gallery-img -->
+                                    </figure>
+                                </div>
+                                <!-- //.item -->
+
+                                <div class="item">
+                                    <figure>
+                                        <div class="gallery-img">
+                                            <a href="/static/images/gallery-5.jpg">
+                                                <img src="/static/images/gallery-5.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <!-- //.gallery-img -->
+                                    </figure>
+                                </div>
+                                <!-- //.item -->
+
+                                <div class="item">
+                                    <figure>
+                                        <div class="gallery-img">
+                                            <a href="/static/images/gallery-6.jpg">
+                                                <img src="/static/images/gallery-6.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <!-- //.gallery-img -->
+                                    </figure>
+                                </div>
+                                <!-- //.item -->
+                                <!-- //.item -->
+                            </div>
+                            <!-- //.gallery-grid -->
+                        </div>
+                        <!-- //.gallery-wrapper -->
+                    </div>
+                    <!-- //.col-12 -->
+                </div>
+                <!-- //.row -->
+            </div>
+            <!-- //.container -->
+        </section>
+        <!-- //Section - Gallery End -->
+
+
+        <!-- Section - Sponsors Start -->
+        <section id="sponsors" class="bg-white">
+            <div class="container">
+                <div class="row justify-content-center mb-5">
+                    <div class="col-lg-6 text-center mb-3 mb-lg-5">
+                        <h3 class="font-alt font-w-700 letter-spacing-2 m-0 text-uppercase title-small">Previous Sponsers</h3>
+                        <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+                    </div>
+                    <!-- //.col-lg-6 -->
+                </div>
+                <!-- //.row -->
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 text-center">
+                                <img width="200" src="/static/images/client-1.png" alt=""/>
+                            </div>
+                            <!-- //.col-sm-6 -->
+
+                            <div class="col-sm-6 col-md-4 text-center mt-4 mt-sm-0">
+                                <img width="200" src="/static/images/client-2.png" alt=""/>
+                            </div>
+                            <!-- //.col-sm-6 -->
+
+                            <div class="col-sm-6 col-md-4 text-center mt-4 mt-md-0">
+                                <img width="200" src="/static/images/client-3.png" alt=""/>
+                            </div>
+                            <!-- //.col-sm-6 -->
+
+                            <div class="col-sm-6 col-md-4 text-center mt-4">
+                                <img width="200" src="/static/images/client-4.png" alt=""/>
+                            </div>
+                            <!-- //.col-sm-6 -->
+
+                            <div class="col-sm-6 col-md-4 text-center mt-4">
+                                <img width="200" src="/static/images/client-5.png" alt=""/>
+                            </div>
+                            <!-- //.col-sm-6 -->
+
+                            <div class="col-sm-6 col-md-4 text-center mt-4">
+                                <img width="200" src="/static/images/client-6.png" alt=""/>
+                            </div>
+                            <!-- //.col-sm-6 -->
+							<div class="col-sm-6 col-md-4 text-center mt-4">
+                                <img width="200" src="/static/images/client-7.jpg" alt=""/>
+                            </div>
+                            <!-- //.col-sm-6 -->
+							<div class="col-sm-6 col-md-4 text-center mt-4">
+                                <img width="200" src="/static/images/client-8.jpg" alt=""/>
+                            </div>
+                            <!-- //.col-sm-6 -->
+							<div class="col-sm-6 col-md-4 text-center mt-4">
+                                <img width="200" src="/static/images/client-9.png" alt=""/>
+                            </div>
+                            <!-- //.col-sm-6 -->
+                        </div>
+                        <!-- //.row -->
+                    </div>
+                    <!-- //.col-lg-10 -->
+                </div>
+                <!-- //.row -->
+            </div>
+            <!-- //.container -->
+        </section>
+        <!-- //Section - Sponsors End -->
+
+
+        <!-- Contact -->
     <section id="contact">
       <div class="container">
+
+
+
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">GET IN TOUCH</h2>
+
+            <div id="sucess-msgs" style="display:none;color:white;">Your message has been recorded. We will contact you soon.</div>
+            <h3 class="section-subheading text-muted"></h3>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
-              <div class="Sucess" id="sucess-msg" style="display:none;">
-                      Message recorded!, we'll contact you soon.
-                                       </div>
-            <form id="contactForm" name="sentMessage" novalidate method="post" action={% url 'messages' %}>
+            <form id="contactForm" action="{% url 'contact' %}" name="sentMessage" novalidate method="post">
+                {%  csrf_token %}
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input class="form-control" name="name" id="name" type="text" placeholder="Your Name *" required data-validation-required-message="Please enter your name.">
+                    <input class="form-control" id="name" name='name' type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name.">
                     <p class="help-block text-danger"></p>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *" required data-validation-required-message="Please enter your email address.">
+                    <input class="form-control" id="email" name='email' type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address.">
                     <p class="help-block text-danger"></p>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="number" id="phone" type="tel" placeholder="Your Phone *" required data-validation-required-message="Please enter your phone number.">
+                    <input class="form-control" id="phone" name='phone' type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number.">
                     <p class="help-block text-danger"></p>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <textarea class="form-control" name="msg" id="message" placeholder="Your Message *" required data-validation-required-message="Please enter a message."></textarea>
+                    <textarea class="form-control" id="message" name='message' placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message."></textarea>
                     <p class="help-block text-danger"></p>
                   </div>
                 </div>
@@ -304,23 +642,24 @@ alert ("This is a warning message!");
                 </div>
               </div>
             </form>
+
               <script>
   function query()
   {
-    document.getElementById("sucess-msg").style.display="block";
-    document.queries.reset();
+    document.getElementById("sucess-msgs").style.display="block";
+    document.getElementById("contactForm").reset();
   }
 
 
 function msg_sent(){
   $.ajax({
-    url : "/agency/messages/",
+    url : "/contact/",
     type : "POST",
     dataType : "json",
     data : { name : $('#name').val(),
               email : $('#email').val(),
               number: $('#phone').val(),
-              msg : $('#message').val(),
+              msg : $('#message').val()
   },
 
     success : function(json){
@@ -330,7 +669,7 @@ function msg_sent(){
       console.log(xhr.status + " : " + xhr.responseText);
     }
   });
-};
+}
 
                     </script>
                     <script src="/static/js/jquery.min.js" charset="utf-8"></script>
@@ -345,31 +684,85 @@ function msg_sent(){
           </div>
         </div>
       </div>
-    </section>
+      <br>
+      <br>
 
-    <!-- Footer -->
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+			<ul class="list-inline" style='color:white;'>
+                    <li align='center' style='font-weight: bold;'>Abhinav Singh</li>
+                    <li align='center' style='font-weight: bold;'>Student Co-Convenor, Minovation'18</li>
+					<li align='center' style='font-weight: bold;'>abhinav.singh.min15@iitbhu.ac.in</li>
+					<li align='center' style='font-weight: bold;'>91-9455233157</li>
+
+            </ul>
+
+            <!--<button class="btn btn-default btn-sm">Abhinav Singh<br>Student Co-Convenor, Minovation'18<br>abhinav.singh.min15@itbhu.ac.in<br>91-9455233157</button>-->
+
+          </div>
+          <div class="col-sm-4 col-md-4">
+				<ul class="list-inline" style='color:white;'>
+                    <li align='center' style='font-weight: bold;'>Shivam Singh</li>
+                    <li align='center' style='font-weight: bold;'>Student Convenor, Minovation'18</li>
+					<li align='center' style='font-weight: bold;'>shivam.singh.min15@iitbhu.ac.in</li>
+					<li align='center' style='font-weight: bold;'>91-9455233157</li>
+
+            </ul>
+            <!--<button class="btn btn-default btn-sm">Shivam Singh<br>Student Convenor, Minovation'18<br>shivam.singh.min15@itbhu.ac.in<br>91-9807851178</button>-->
+          </div>
+          <div class="col-sm-4 col-md-4">
+		  <ul class="list-inline" style='color:white;'>
+                    <li align='center' style='font-weight: bold;'>Prateek Sahoo</li>
+                    <li align='center' style='font-weight: bold;'>Student Co-Convenor, Minovation'18</li>
+					<li align='center' style='font-weight: bold;'>prateek.sahoo.min16@iitbhu.ac.in</li>
+					<li align='center' style='font-weight: bold;'>91-9455233157</li>
+
+            </ul>
+            <!--<button class="btn btn-default btn-sm">Prateek Sahoo<br>Student Co-Convenor, Minovation'18<br>prateek.sahoo.min16@itbhu.ac.in<br>91-8984843146</button>-->
+
+          </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    </section>
+        <!-- //Section - Contact End -->
+
+
+        <!-- Footer -->
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
-            <span class="copyright">Copyright &copy; Abhishek Singh</span>
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Minovation 2018</span>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
-                <a href="https://github.com/abhimin15">
-                  <i class="fa fa-github"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://www.facebook.com/profile.php?id=100009592912584">
+                <a href="https://www.facebook.com/iitbhu.minovation/?ref=br_tf">
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="https://www.linkedin.com/in/abhishek-singh-04b031147">
-                  <i class="fa fa-linkedin"></i>
+                <a href="https://www.youtube.com/watch?v=0DoeEeZSda8">
+                  <i class="fa fa-youtube"></i>
                 </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                Department of Mining Engineering
+              </li>
+              <li class="list-inline-item">
+                IIT BHU, Varanasi
               </li>
             </ul>
           </div>
@@ -377,7 +770,7 @@ function msg_sent(){
       </div>
     </footer>
 
-    <!-- Portfolio Modals -->
+	<!-- Portfolio Modals -->
 
     <!-- Modal 1 -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -393,18 +786,45 @@ function msg_sent(){
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="/static/images/portfolio/01-full.jpg" alt="" style="width: 250px; height: 250px;">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Threads</li>
-                    <li>Category: Illustration</li>
+				  <center>
+                  <h3 class="text-uppercase">PAPER PRESENTATION</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+				  </center>
+                  <p class="item-intro text-muted"></p>
+                  <p>In today's dynamic world the need of the hour is to have a sustainable, economic and efficient plan to accompalish any task. MINOVATION 2018 invites students/scholars to present their papers and contribute to fostering the Industry-Academia Collaboration.</p>
+                  <h5>Event Structures</h5>
+				  <p>The event consists of two rounds. First is online submission and the second is to be conducted at IIT (BHU) Varanasi during MINOVATION'18.
+				  First round is Online submission of abstract in pdf format to be emailed to <a href='#'>events@minovation.in</a> and based on which teams will be short listed for the next round.
+				  Second round is a presentation cum questionnaire round where participants need to present their work before Judges and other teams.
+				  </p>
+				  <h5>Rules</h5>
+				  <p style='test-align:left;'>
+					<ol>
+						<li>Individuals must register online to participate.</li>
+						<li>Each team can contain a maximum of 4 participants</li>
+						<li>For the preliminary round each team needs to prepare an abstract of their innovative idea.</li>
+						<li>The abstract must contain the team name and the names of each member, and it should be mailed to <a href='#'>events@minovation.in</a></li>
+						<li>Teams will be short listed on the basis of the merit of their submission. So try to cover all the important points of your work in the abstract.</li>
+						<li>Short listed participants will be eligible to present their idea at IIT (BHU) Varanasi during MINOVATION'18.</li>
+						<li>Teams short listed for the second round must come with a proper presentation along with at least 2 hardcopies of their presentation.</li>
+						<li>Each team will be provided a time limit of 10 minutes to present their ideas.</li>
+						<li>The decision of the judges will be final and binding.</li>
+						<li>Top three participants will get a certificate of merit and others will get a certificate of participation.</li>
+
+					</ol>
+				  </p>
+				  <h5>Prize Money 15k</h5>
+				  <ul class="list-inline">
+					<li>Winner 7k</li>
+					<li>1st Runner Up 5k</li>
+					<li>2nd Runner Up 3k</li>
+				  </ul>
+				  <h5>Further Queries </h5>
+				  <ul class="list-inline">
+                    <li>Rabindra nath Hansdah: +917270949860</li>
+                    <li>Hitesh Kumar Paliwal: +918239877851</li>
+
                   </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
                 </div>
               </div>
             </div>
@@ -412,6 +832,7 @@ function msg_sent(){
         </div>
       </div>
     </div>
+
     <!-- Modal 2 -->
     <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
@@ -426,18 +847,42 @@ function msg_sent(){
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="/static/images/portfolio/02-full.jpg" alt="" style="width: 250px; height: 250px;">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Explore</li>
-                    <li>Category: Graphic Design</li>
+				  <center>
+                  <h3 class="text-uppercase">INDUSTRIAL DESIGN PROBLEM</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+				  </center>
+                  <p class="item-intro text-muted"></p>
+                  <p>Engineers encounter a wide variety of challenges every day in the field.  They can comprise of situations related to structural integrity, mine safety or mine optimization or any other unique hurdle that comes in our way. MINOVATION 2018 brings real case scenarios into the problem statement to give the students a savor of what it means to be working in a dynamic industry. </p>
+                  <h5>Event Structures</h5>
+				  <p>
+				  <ul class="list-inline">
+					<li>Event will be organized in two phases and both the phases will be conducted at IIT BHU during MINOVATION 2018.</li>
+					<li>First phase will have a written examination from which few teams will be selected for next round.</li>
+					<li>Second round, a problem statement will be given and solution which has to be designed in specified time period. </li>
+				  </ul>
+				  </p>
+				  <h5>Rules</h5>
+				  <p style='test-align:left;'>
+					<ol>
+						<li>Individuals must register online to participate.</li>
+						<li>Each team can contain a maximum of 4 participants</li>
+						<li>The decision of the judges will be final and binding.</li>
+						<li>Top three participants will get a certificate of merit and others will get a certificate of participation.</li>
+
+					</ol>
+				  </p>
+				  <h5>Prize Money 20k</h5>
+				  <ul class="list-inline">
+					<li>Winner 10k</li>
+					<li>1st Runner Up 6k</li>
+					<li>2nd Runner Up 4k</li>
+				  </ul>
+				  <h5>Further Queries </h5>
+				  <ul class="list-inline">
+                    <li>Kamlesh Charan: +91 84008 81749</li>
+                    <li>Hitesh Kumar Paliwal: +918239877851</li>
+
                   </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
                 </div>
               </div>
             </div>
@@ -460,18 +905,40 @@ function msg_sent(){
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="/static/images/portfolio/03-full.jpg" alt="" style="width: 250px; height: 250px;">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Finish</li>
-                    <li>Category: Identity</li>
+                  <center>
+                  <h3 class="text-uppercase">SIMULATION</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+				  </center>
+                  <p>Simulation modeling solves real-world problems safely and efficiently. It provides an important method of analysis which is easily verified, communicated, and understood. The event will provide the students a real mine problem and student have to find solution through Phase-2D simulation software. The event will be held followed by workshop on Phase-2D.</p>
+                  <h5>Event Structures</h5>
+				  <p><ul class="list-inline">
+					<li>The competition will be organized in single phase followed by a workshop on Phase-2D. </li>
+					<li>Problem statements will be provided on Phase-2D and student will have to simulate the problem in limited time and provide better result.</li>
+
+				  </ul>
+				  </p>
+				  <h5>Rules</h5>
+				  <p style='test-align:left;'>
+					<ol>
+						<li>Only teams who have registered online on Minovation’18 would be able to participate.</li>
+						<li>Each team can contain a maximum of 3 participants</li>
+						<li>The decision of the judges will be final and binding.</li>
+						<li>Each team must bring their laptops. </li>
+
+					</ol>
+				  </p>
+				  <h5>Prize Money 18k</h5>
+				  <ul class="list-inline">
+					<li>Winner 8k</li>
+					<li>1st Runner Up 6k</li>
+					<li>2nd Runner Up 4k</li>
+				  </ul>
+				  <h5>Further Queries </h5>
+				  <ul class="list-inline">
+                    <li>Shubham Mishra: +91 7275667035</li>
+                    <li>Hitesh Kumar Paliwal: +918239877851</li>
+
                   </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
                 </div>
               </div>
             </div>
@@ -494,18 +961,43 @@ function msg_sent(){
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="/static/images/portfolio/04-full.jpg" alt="" style="width: 250px; height: 250px;">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Lines</li>
-                    <li>Category: Branding</li>
+                  <center>
+                  <h3 class="text-uppercase">MENSURA</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+				  </center>
+                  <p class="item-intro text-muted"></p>
+                  <p>Surveying has been an essential element in the development of the human environment for so many centuries that its importance is often forgotten. It is an imperative requirement in the planning and execution of nearly every form of construction. The event will give you an opportunity to implement you classroom knowledge and develop an understating to solve real life problem.</p>
+                  <h5>Event Structures</h5>
+				  <p>
+				  <ul class="list-inline">
+					<li>The event contains two rounds with a Surveying Workshop. The Workshop and event will be held During Minovation’18 at IIT(BHU) VARANASI.</li>
+					<li>First round will be elimination round that contains a surveying quiz followed by a workshop and based on first round few teams will be selected for second round.</li>
+					<li>Second round is containing handling of equipment, in which participants have to solve problem statement by using surveying instruments. </li>
+				  </ul>
+				  </p>
+				  <h5>Rules</h5>
+				  <p style='test-align:left;'>
+					<ol>
+						<li>Only teams who have registered online would be able to participate.</li>
+						<li>Each team can contain a maximum of 4 participants</li>
+						<li>The decision of the judges will be final and binding.</li>
+						<li>Participants should have knowledge of handling of equipments, for harming any equipment unintentionally may lead to fine.</li>
+						<li>Shoes are mandatory for final round. </li>
+
+					</ol>
+				  </p>
+				  <h5>Prize Money 16k</h5>
+				  <ul class="list-inline">
+					<li>Winner 7k</li>
+					<li>1st Runner Up 5k</li>
+					<li>2nd Runner Up 4k</li>
+				  </ul>
+				  <h5>Further Queries </h5>
+				  <ul class="list-inline">
+                    <li>Shubham Kumar Mahato: +91 8873727807</li>
+                    <li>Hitesh Kumar Paliwal: +918239877851</li>
+
                   </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
                 </div>
               </div>
             </div>
@@ -514,17 +1006,358 @@ function msg_sent(){
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Modal 5 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <center>
+                  <h3 class="text-uppercase">INTRIGUE</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+				  </center>
+                  <p class="item-intro text-muted"></p>
+                  <p>To run a business an individual should possess an adaptive mind that moulds according to the dynamics of the present. MINOVATION 2018 would be organizing a contest where participants get a chance to solve case studies on Mining Industry to test the managerial mettle.</p>
+                  <h5>Event Structures</h5>
+				  <p>
+				  <ul class="list-inline">
+					<li>The event consists of two rounds. First is online submission and the second is to be conducted at IIT (BHU) Varanasi during MINOVATION'18</li>
+					<li>Preliminary round will be an abstract submission round. The abstract will define the approach by which the problem statement will be solved. The abstract has to be submitted in pdf format and should be mailed to <a href='#'>events@minovation.in</a> and based on which teams will be short listed for the next round.</li>
+					<li>Final round is a presentation round. Each team will be given a slot of 15 minutes to present which shall include 2 minutes of questionnaire.</li>
+				  </ul>
+				  </p>
+				  <h5>Rules</h5>
+				  <p style='test-align:left;'>
+					<ol>
+						<li>Individuals must register online to participate.</li>
+						<li>Each team can contain a maximum of 3 participants</li>
+						<li>The abstract must contain the team name and the names of each member, and it should be mailed to <a href='#'>events@minovation.in</a></li>
+						<li>The decision of the judges will be final and binding.</li>
+						<li>Top three participants will get a certificate of merit and others will get a certificate of participation.</li>
+
+					</ol>
+				  </p>
+				  <h5>Prize Money 18k</h5>
+				  <ul class="list-inline">
+					<li>Winner 8k</li>
+					<li>1st Runner Up 6k</li>
+					<li>2nd Runner Up 4k</li>
+				  </ul>
+				  <h5>Further Queries </h5>
+				  <ul class="list-inline">
+                    <li>Kumar Anurag: +91 8235210543, +91 7233022596</li>
+                    <li>Hitesh Kumar Paliwal: +918239877851</li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <<center>
+                  <h3 class="text-uppercase">INNOTECH</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+				  </center>
+                  <p class="item-intro text-muted"></p>
+                  <p>MINOVATION'18 brings you an opportunity to bring out the innovator in you and present your innovative ideas either as model or instrument. Make sure the idea must be innovative and has some application in the mining and allied industry.</p>
+                  <h5>Event Structures</h5>
+				  <p><ul class="list-inline">
+					<li>The event consists of two rounds. First is online submission and the second is to be conducted at IIT (BHU) Varanasi during MINOVATION'18.</li>
+					<li>Round 1: Online submission of abstract in pdf format to be emailed to events@minovation.in and based on which teams will be short listed for the next round.</li>
+					<li>Round 2:  Second round is a presentation cum questionnaire round where participants need to present their work before Judges and other teams.</li>
+				  </ul>
+				  </p>
+				  <h5>Rules</h5>
+				  <p style='test-align:left;'>
+					<ol>
+						<li>Individuals must register online to participate.</li>
+						<li>Each team can contain a maximum of 4 participants</li>
+						<li>For the preliminary round each team needs to prepare an abstract of their innovative idea.</li>
+						<li>The abstract must contain the team name and the names of each member, and it should be mailed to <a href='#'>events@minovation.in</a></li>
+						<li>Teams will be short listed on the basis of the merit of their submission. So try to cover all the important points of your work in the abstract.</li>
+						<li>Short listed participants will be eligible to present their idea at IIT (BHU) Varanasi during MINOVATION'18.</li>
+						<li>Teams short listed for the second round must come with a proper presentation along with at least 2 hardcopies of their presentation.</li>
+						<li>Each team will be provided a time limit of 10 minutes to present their ideas.</li>
+						<li>The decision of the judges will be final and binding.</li>
+						<li>Top three participants will get a certificate of merit and others will get a certificate of participation.</li>
+
+					</ol>
+				  </p>
+				  <h5>Prize Money 20k</h5>
+				  <ul class="list-inline">
+					<li>Winner 10k</li>
+					<li>1st Runner Up 6k</li>
+					<li>2nd Runner Up 4k</li>
+				  </ul>
+				  <h5>Further Queries </h5>
+				  <ul class="list-inline">
+                    <li>Arun Marothiya: +91 9414248212</li>
+                    <li>Hitesh Kumar Paliwal: +918239877851</li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 7 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <center>
+                  <h3 class="text-uppercase">GEOCARTER</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+				  </center>
+                  <p class="item-intro text-muted"></p>
+                  <p>Geology is the core discipline of the earth sciences and encompasses many different phenomena, including plate tectonics and mountain building, volcanoes and earthquakes, and the long-term evolution of Earth’s atmosphere, surface and life. Because of the ever-increasing demand for resources, the growing exposure to natural hazards, and the changing climate, geology is of considerable societal relevance. This event will check your grip on geology with your engineering skills. The event contains interesting geological engineering problems with geological mapping and identification of different rock and minerals. </p>
+                  <h5>Event Structures</h5>
+				  <p>
+				  <ul class="list-inline">
+					<li>The event contains two rounds and both rounds will be held During Minovation’18 at Department of Mining Engineering IIT(BHU) Varanasi.</li>
+					<li>In the first round participants have to identify different minerals and rock on the basis of their characterstics and Second round will be subjective questioning round with some good geological problems and mapping. Participants are required to come with one geometry box per team for second round.</li>
+					<li>Both rounds contain some wettage for estimation of results, so participants have to attend both rounds.</li>
+				  </ul>
+				  </p>
+				  <h5>Rules</h5>
+				  <p style='test-align:left;'>
+					<ol>
+						<li>Only teams who have registered online on Minovation’18 would be able to participate.</li>
+						<li>Each team can contain a maximum of 4 participants</li>
+						<li>The decision of the judges will be final and binding.</li>
+						<li>Shoes are mandatory for each round.</li>
+
+					</ol>
+				  </p>
+				  <h5>Prize Money 15k</h5>
+				  <ul class="list-inline">
+					<li>Winner 7k</li>
+					<li>1st Runner Up 5k</li>
+					<li>2nd Runner Up 3k</li>
+				  </ul>
+				  <h5>Further Queries </h5>
+				  <ul class="list-inline">
+                    <li>Mohit Dadhich: +91-7309081486 </li>
+                    <li>Hitesh Kumar Paliwal: +918239877851</li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 8 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <center>
+                  <h3 class="text-uppercase">RECONDITE</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+				  </center>
+                  <p class="item-intro text-muted"></p>
+                  <p>Recondite will hope to test your knowledge in the field of Mining Engineering and also about various events, companies, inventions that are connected somehow to Mining Industries. The Quiz will push you put on your thinking hats and unscramble the answer to bag the prize.</p>
+                  <h5>Event Structures</h5>
+				  <p><ul class="list-inline">
+					<li>The competition will be organized in two phases( Prelims & Finals). Both will take place during the Minnovation at IIT (BHU) Varanasi. </li>
+					<li>Eight teams will be selected from the prelims for the final round. </li>
+					<li>After competing in the final round, three teams will be selected as winners based on the score.</li>
+				  </ul>
+				  </p>
+				  <h5>Rules</h5>
+				  <p style='test-align:left;'>
+					<ol>
+						<li>Only teams who have registered online would be able to participate.</li>
+						<li>Each team can contain a maximum of 2 participants</li>
+						<li>The decision of the judges will be final and binding.</li>
+						<li>Participants should have knowledge of handling of equipments, for harming any equipment unintentionally may lead to fine.</li>
+						<li>Shoes are mandatory for final round. </li>
+
+					</ol>
+				  </p>
+				  <h5>Prize Money 18k</h5>
+				  <ul class="list-inline">
+					<li>Winner 8k</li>
+					<li>1st Runner Up 6k</li>
+					<li>2nd Runner Up 4k</li>
+				  </ul>
+				  <h5>Further Queries </h5>
+				  <ul class="list-inline">
+                    <li>Aniket Shrivastva: +91 7376619398</li>
+					<li>Sagar Kumar Singh: +91 8602089572</li>
+                    <li>Hitesh Kumar Paliwal: +918239877851</li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 9 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <center>
+                  <h3 class="text-uppercase">WORKSHOPS</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+				  </center>
+                  <p class="item-intro text-muted"></p>
+                  <p>
+				  <ol>
+				  <li>Simulation Workshop</li>
+				  <li>Mensura Workshop (Surveying)</li>
+				  <li>Other Workshops<ul>
+						<li>Rock Mechanics and Instrumentation</li>
+						<li>Mining Machinery</li>
+				  </ul></li>
+				  </ol>
+				  </p>
+				  <ul class="list-inline">
+                    <li>Shishpal Ram Samota: +917727898227</li>
+					<li>Nimba Ram: +919649754833</li>
+                    <li>Ajit Kumar: +919598439354</li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	<!-- Modal 10 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal10" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+				  <center>
+                  <h3 class="text-uppercase">GEUST LECTURES</h3>
+				  <span class="bg-yellow d-block mt-4 mx-auto sep-line-medium-thick-long"></span>
+
+				  <h4 style='padding-top:5%;'>Information will be updated soon<h4>
+
+				  </center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        <!-- Scroll to top -->
+        <a href="#page-top" class="page-scroll scroll-to-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+
+
+        <!-- Main JS -->
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/popper.min.js"></script>
+
+
+        <!--Include all js plugins -->
+        <script src="/static/js/pace.min.js"></script>
+        <script src="/static/js/jquery.easing.min.js"></script>
+        <script src="/static/js/jquery.matchHeight.min.js"></script>
+        <script src="/static/js/jquery.inview.min.js"></script>
+        <script src="/static/js/jquery.countTo.js"></script>
+        <script src="/static/js/imagesloaded.pkgd.min.js"></script>
+        <script src="/static/js/isotope.pkgd.min.js"></script>
+        <script src="/static/js/jquery.magnific-popup.min.js"></script>
+        <script src="/static/js/jquery.validate.min.js"></script>-->
+
+        <!-- BG Slideshow -->
+        <script src="/static/js/flickity.pkgd.min.js"></script>
+
+        <!-- Theme JS -->
+        <script src="/static/js/theme.js"></script>
+
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Contact form JavaScript -->
-    <script src="/static/js/jqBootstrapValidation.js"></script>
-    <script src="/static/js/contact_me.js"></script>
+    <!-- Contact form JavaScript
+        <script src="/static/js2/jqBootstrapValidation.js"></script>
+        <script src="/static/js2/contact_me.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="/static/js/agency.min.js"></script>
-{% endblock %}
+    <!-- Custom scripts for this template
+        <script src="/static/js2/agency.min.js"></script>-->
+    </body>
+
+<!-- Mirrored from himalayanthemes.net/Demos/Mico/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Aug 2018 19:15:31 GMT -->
+</html>

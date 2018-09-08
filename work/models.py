@@ -21,12 +21,35 @@ sex_choices = [
 
 class contact(models.Model):
     name=models.CharField(max_length=100)
-    email=models.CharField(max_length=100,unique=True)
+    email=models.CharField(max_length=100)
     number=models.CharField(max_length=10)
-    message=models.TextField()
-
+    message = models.TextField()
     def __unicode__(self):
         return self.name
+
+class CampusAmb(models.Model):
+    name=models.CharField(max_length=100)
+    email=models.CharField(max_length=100)
+    number=models.CharField(max_length=10)
+    wat = models.CharField(max_length=10)
+    branch = models.CharField(max_length=10)
+    college = models.CharField(max_length=10)
+    year = models.PositiveSmallIntegerField(choices=year_choices, null=True, blank=True)
+    def __unicode__(self):
+        return self.name
+
+class Registration(models.Model):
+    name=models.CharField(max_length=100)
+    email=models.CharField(max_length=100)
+    number=models.CharField(max_length=12)
+    wat = models.CharField(max_length=12)
+    branch = models.CharField(max_length=10)
+    college = models.CharField(max_length=100)
+    year = models.PositiveSmallIntegerField(choices=year_choices, null=True, blank=True)
+    event = models.CharField(max_length=100)
+    def __unicode__(self):
+        return self.name
+
 class Payment(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.CharField(max_length=100, unique=True)
