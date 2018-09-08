@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -133,6 +134,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),)
 
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #paypal settings
 PAYPAL_RECEIVER_EMAIL='abhishek.lock.97@gmail.com'
 PAYPAL_TEST=True
