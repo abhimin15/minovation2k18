@@ -1,3 +1,5 @@
+db.sqlite3
+
 ".py[cod]"
 .DS_Store
 bin/
