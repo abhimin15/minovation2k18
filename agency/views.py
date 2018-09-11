@@ -129,6 +129,6 @@ def contacts(request):
 
 def infobro(request):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    filepath = os.path.join(BASE_DIR, 'PDFs/brochure.pdf')
+    filepath = os.path.join(BASE_DIR, 'Pdfs/brochure.pdf')
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
 
