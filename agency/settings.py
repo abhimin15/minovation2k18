@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#+x$znx!q0i=o*++=tt1vqp_w$9@9)ws4k2bwi#%jr+at%d$rx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['minovation2k18.herokuapp.com','.minovation.in']
+ALLOWED_HOSTS = []
 
 #'minovation2k18.herokuapp.com','.minovation.in'
 # Application definition
@@ -84,9 +84,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
