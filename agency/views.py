@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render_to_response,Http404,redirect
 from work.models import contact,CampusAmb,Registration
 from django.http import HttpResponseRedirect
@@ -37,26 +38,18 @@ def capost(request):
             college = post.get('college')
             CampusAmb.objects.create(name=name,email=email,number=number,year=year,branch=branch,wat=wat,college=college)
             subject = 'Campus Ambassdor Registration'
-            body = 'Congratulations '+name+''',
+            body = \
+            'Congratulations '+name+''',
 
-    We are ecstatic that you have shown interest in the annual festival of India's oldest and the most acclaimed Mining Engineering department,i.e.Minovation2018. You are selected as the Campus Ambassador of MINOVATION 2018 from your institute.
+            We are ecstatic that you have shown interest in the annual festival of India's oldest and the most acclaimed Mining Engineering department, i.e. Minovation 2018. You are selected as the Campus Ambassador of MINOVATION 2018 from your institute. This email is just a symbol of our gratitude towards your valuable effort of registering for Campus Ambassador on the website of MINOVATION 2018. The holy city of Kashi awaits you and so do we all Minovators at IIT(BHU), Varanasi. Just a reminder about the date-28-30 September 2018. Come be a part of us. Become a Minovator!!
 
-    This email is just a symbol of our gratitude towards your valuable effort of registering for Campus Ambassador on the website of MINOVATION 2018.
-
-    The holy city of Kashi awaits you and so do we all Minovators at IIT(BHU), Varanasi.
-
-    Just a reminder about the date-28-30 September 2018.
-
-    Come be a part of us. Become a Minovator!!
-
-    Regards
-
-    Team
-
-    MINOVATION 2018
-
-    IIT(BHU), Varanasi.'''
-            mail_sending(request,subject,body,email)
+            Regards,
+            Team Minovation
+            Department of Mining Engineering
+            IIT(BHU), Varanasi.'''
+            from_email = settings.EMAIL_HOST_USER
+            to_email = [email,]
+            send_mail(subject=subject,from_email = from_email ,recipient_list = to_email,message = body,fail_silently=True )
             context = {'messages':'Congratulation!, You have sucessfully registered'}
             return render_to_response('work/index.html',context)
     except:
@@ -65,9 +58,6 @@ def capost(request):
     else:
         return render_to_response('work/caform.html', {})
 
-def mail_sending(request,subject,body,email):
-    send_mail(subject, body, 'as57807@gmail.com', [email],fail_silently=False,)
-    return True
 
 @csrf_exempt
 def eventpost(request):
@@ -93,16 +83,26 @@ def eventpost(request):
             event =''
             even_name=['intrigue','simulation','paper','mensura','geocarter','recondite','innotech','industrail','workshops']
             events = [intrigue,simulation,paper,mensura,geocarter,recondite,innotech,industrail,workshops]
+
             for i in range(len(events)):
                 if events[i] =='on':
                     event = event+even_name[i]+' '
 
             Registration.objects.create(name=name,email=email,number=number,year=year,branch=branch,wat=wat,college=college,event=event)
             subject = 'Event Registration'
-            body ='Congrats '+name+''',
-            We are ecstatic that you have shown interest in the annual festival of India's oldest and the most acclaimed Mining Engineering department,i.e.Minovation2018.Now you are officially registered for MINOVATION 2018.
-            This email is just a symbol of our gratitude towards your valuable effort of registering for MINOVATION 2018.'''
-            mail_sending(request, subject, body, email)
+            body =\
+            'Congrats '+name+''',
+
+            We are ecstatic that you have shown interest in the annual festival of India's oldest and the most acclaimed Mining Engineering department, i.e. Minovation 2018. Now you are officially registered for MINOVATION 2018. This email is just a symbol of our gratitude towards your valuable effort of registering for MINOVATION 2018.
+
+            Regards,
+            Minovation Team
+            Department of Mining Engineering
+            IIT(BHU), Varanasi.'''
+
+            from_email = settings.EMAIL_HOST_USER
+            to_email = [email,]
+            send_mail(subject=subject, from_email=from_email, recipient_list=to_email, message=body,fail_silently=True)
             context = {'messages':'Congratulation!, You have sucessfully registered'}
             return render_to_response('work/index.html',context)
     except:
@@ -121,7 +121,6 @@ def contacts(request):
         name = post.get('name')
         message = post.get('msg')
         contact.objects.create(name=name,email=email,number=number,message=message)
-        mail_sending(request)
         messages.success(request, "Message recorded!, we'll contact you soon", fail_silently=True)
         response_data = {}
     else:

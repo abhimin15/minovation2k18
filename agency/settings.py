@@ -105,12 +105,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'minovation@itbhu.ac.in'
-EMAIL_HOST_PASSWORD = 'mettle.new'
+EMAIL_HOST_USER = 'events.minovation@gmail.com'
+EMAIL_HOST_PASSWORD = 'minovation18'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -122,7 +122,7 @@ SITE_ID = 1
 
 #CORS_REPLACE_HTTPS_REFERER      = True
 #HOST_SCHEME                     = "https://"
-#SECURE_PROXY_SSL_HEADER         = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER         = ('HTTP_X_FORWARDED_PROTO', 'https')
 #SECURE_SSL_REDIRECT             = True
 #SESSION_COOKIE_SECURE           = True
 #CSRF_COOKIE_SECURE              = True
