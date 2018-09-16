@@ -50,7 +50,7 @@ def capost(request):
             from_email = settings.EMAIL_HOST_USER
             to_email = [email,]
             send_mail(subject=subject,from_email = from_email ,recipient_list = to_email,message = body,fail_silently=True )
-            context = {'messages':'Congratulation!, You have sucessfully registered'}
+            context = {'messages':'Congratulation! You have sucessfully registered'}
             return render_to_response('work/index.html',context)
     except:
         Http404('<h4>"Check the fields again"</h4>')
@@ -103,7 +103,7 @@ def eventpost(request):
             from_email = settings.EMAIL_HOST_USER
             to_email = [email,]
             send_mail(subject=subject, from_email=from_email, recipient_list=to_email, message=body,fail_silently=True)
-            context = {'messages':'Congratulation!, You have sucessfully registered'}
+            context = {'messages':'Congratulation! You have sucessfully registered'}
             return render_to_response('work/index.html',context)
     except:
         Http404('<h4>"Check the fields again"</h4>')

@@ -1681,7 +1681,7 @@ header .navbar-toggler {
 }
 
 header .navbar-toggler-icon {
-    background-image: url(../img/navbar-toggler-dark.html)
+    background-image: url(/static/images/navbar-toggler-dark.svg)
 }
 
 header .navbar-nav .nav-link:hover {
@@ -1711,7 +1711,7 @@ header.header-light .navbar-toggler {
 }
 
 header.header-light .navbar-toggler-icon {
-    background-image: url(../img/navbar-toggler-light.svg)
+    background-image: url(/static/images/navbar-toggler-light.svg)
 }
 
 header.header-light .navbar-nav .nav-link {
