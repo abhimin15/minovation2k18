@@ -12,7 +12,6 @@ django-cors-headers==2.1.0
 django-filter==1.1.0
 django-htmlmin==0.10.0
 django-oauth2-provider==0.2.6.1
-djangorestframework==3.7.7
 dnspython==1.15.0
 enum34==1.1.6
 gunicorn==19.9.0
