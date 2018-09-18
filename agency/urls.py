@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^eventpost/$', views.eventpost,name='eventpost'),
     url(r'^contact/$', views.contacts,name='contact'),
     url(r'^brochure/$', views.infobro, name='infobro'),
+	url(r'^intrigue/$', views.problem_statement, name='problem'),
 ]
