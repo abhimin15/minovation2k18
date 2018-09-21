@@ -22,28 +22,28 @@ sex_choices = [
 class contact(models.Model):
     name=models.CharField(max_length=100)
     email=models.CharField(max_length=100)
-    number=models.CharField(max_length=10)
+    number=models.CharField(max_length=100)
     message = models.TextField()
     def __unicode__(self):
         return self.name
 
 class CampusAmb(models.Model):
     name=models.CharField(max_length=100)
-    email=models.CharField(max_length=100)
-    number=models.CharField(max_length=10)
-    wat = models.CharField(max_length=10)
-    branch = models.CharField(max_length=10)
-    college = models.CharField(max_length=10)
+    email=models.CharField(max_length=500)
+    number=models.CharField(max_length=100)
+    wat = models.CharField(max_length=100)
+    branch = models.CharField(max_length=100)
+    college = models.CharField(max_length=500)
     year = models.PositiveSmallIntegerField(choices=year_choices, null=True, blank=True)
     def __unicode__(self):
         return self.name
 
 class Registration(models.Model):
     name=models.CharField(max_length=100)
-    email=models.CharField(max_length=100)
-    number=models.CharField(max_length=12)
-    wat = models.CharField(max_length=12)
-    branch = models.CharField(max_length=10)
+    email=models.CharField(max_length=500)
+    number=models.CharField(max_length=100)
+    wat = models.CharField(max_length=100)
+    branch = models.CharField(max_length=100)
     college = models.CharField(max_length=100)
     year = models.PositiveSmallIntegerField(choices=year_choices, null=True, blank=True)
     event = models.CharField(max_length=100)
