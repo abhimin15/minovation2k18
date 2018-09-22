@@ -12,13 +12,13 @@ class ContactAdmin(admin.ModelAdmin):
 
 class CampusAdmin(admin.ModelAdmin):
     list_display = ['name','email','number','wat','college','branch','year']
-    list_editable = ['number','wat']
+    #list_editable = ['number','wat']
     class Meta:
         model = CampusAmb
 
 class RegistrationAdmin(admin.ModelAdmin):
     list_display = ['name','email','number','wat','college','branch','year','event']
-    list_editable = ['number','wat']
+    #list_editable = ['number','wat']
     class Meta:
         model = Registration
 

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#+x$znx!q0i=o*++=tt1vqp_w$9@9)ws4k2bwi#%jr+at%d$rx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['minovation2k18.herokuapp.com','.minovation.in']
 
